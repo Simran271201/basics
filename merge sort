@@ -1,0 +1,53 @@
+#include <iostream>
+using namespace std;
+
+void merge(int arr[],int arr1[],int b[100],int n,int m)
+{
+    int k=0,i=0,j=0;
+    while(i<n && j<m)
+    {
+           if(arr[i]<arr1[j])
+           {
+             b[k] = arr[i];
+             k++;
+             i++;
+           }
+           else
+           {
+               b[k] = arr1[j];
+               k++;j++;
+           }
+      
+    }
+    while(i<n)
+    {
+        b[k]=arr[i];
+        k++;
+        i++;
+    }
+    while(j<m)
+    {
+        b[k]=arr1[j];
+        k++;
+        j++;
+    }
+}
+int traverse(int b[],int n, int m)
+{
+    int k = n+m;
+    for(int i=0;i<k;i++)
+    {
+        cout<<b[i]<<" ";
+    }
+}
+int main() {
+    int arr[] = {2,4,7,9,10,101};
+    int arr1[] = {3,6,8,9,10,15};
+    int b[100],k;
+    int n = sizeof(arr)/sizeof(int);
+    int m = sizeof(arr1)/sizeof(int);
+    merge(arr,arr1,b,n,m);
+    traverse(b,n,m);
+
+    return 0;
+}
